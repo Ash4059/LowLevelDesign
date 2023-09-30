@@ -1,43 +1,43 @@
 package ObserverDesign.Observable;
 
 import java.util.*;
+
 import ObserverDesign.Observer.NotificationAlertObserver;
 
-public class IphoneObservable implements StockObservable{
+public class IphoneObservable implements StockObservable {
 
-    private List<NotificationAlertObserver> observerList = new ArrayList<>();
+    private List<NotificationAlertObserver> lstObservable = new ArrayList<>();
 
     private int stockCount = 0;
 
     @Override
-    public void add(NotificationAlertObserver observer) {
-        observerList.add(observer);
+    public void add(NotificationAlertObserver observable){
+        lstObservable.add(observable);
     }
 
     @Override
-    public void remove(NotificationAlertObserver observer) {
-        observerList.remove(observer);
+    public void remove(NotificationAlertObserver observable){
+        lstObservable.remove(observable);
     }
 
     @Override
-    public void notifyObservers() {
-        for (NotificationAlertObserver observer : observerList) {
+    public void notifyObserver(){
+        for(NotificationAlertObserver observer : lstObservable){
             observer.update();
         }
     }
 
     @Override
-    public void setStockCount(int stockCount) {
-
-        if(this.stockCount == 0)
-            notifyObservers();
-        
-        this.stockCount = stockCount;  
-
+    public int getNumOfItem(){
+        return stockCount;
     }
 
     @Override
-    public int getStockCount() {
-        return stockCount;
+    public void setNumOfItem(int stockCount){
+        if(this.stockCount == 0){
+            notifyObserver();
+        }
+        this.stockCount = stockCount;
     }
+
 }

@@ -8,10 +8,10 @@ public interface StockObservable {
 
     public void remove(NotificationAlertObserver observer);
 
-    public void notifyObservers();
+    public int getNumOfItem();
 
-    public void setStockCount(int stockCount);
+    public void setNumOfItem(int num);
 
-    public int getStockCount();
+    public void notifyObserver();
 
 }

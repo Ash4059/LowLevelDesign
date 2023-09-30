@@ -1,27 +1,26 @@
 package ObserverDesign;
 
-import ObserverDesign.Observable.*;
-import ObserverDesign.Observer.*;
+import ObserverDesign.Observable.IphoneObservable;
+import ObserverDesign.Observable.StockObservable;
+import ObserverDesign.Observer.EmailAlertImplementation;
+import ObserverDesign.Observer.MobileAlertImplementation;
+import ObserverDesign.Observer.NotificationAlertObserver;
 
-public class Store {
-    
+public class Store{
+
     public static void main(String args[]){
 
-        StockObservable IphoneObservable = new IphoneObservable();
+        StockObservable iphoneObservable = new IphoneObservable();
 
-        NotificationAlertObserver Observer1 = new EmailAlertObserverImplementation("jaiswalashish405@gmail.com", IphoneObservable);
-        NotificationAlertObserver Observer2 = new EmailAlertObserverImplementation("jaiswalsantosh2810@gmail.com", IphoneObservable);
-        NotificationAlertObserver Observer3 = new MobileAlertImplementation("Shivam2000", IphoneObservable);
+        NotificationAlertObserver observer1 = new EmailAlertImplementation("jaiswalashish405@gmail.com", iphoneObservable);
+        NotificationAlertObserver observer2 = new MobileAlertImplementation("Shivam200", iphoneObservable);
+        NotificationAlertObserver observer3 = new EmailAlertImplementation("Santoshjaiswal2810@gmail.com", iphoneObservable);
 
-        IphoneObservable.add(Observer1);
-        IphoneObservable.add(Observer2);
-        IphoneObservable.add(Observer3);
+        iphoneObservable.add(observer1);
+        iphoneObservable.add(observer2);
+        iphoneObservable.add(observer3);
 
-        IphoneObservable.setStockCount(0);
-
-        IphoneObservable.setStockCount(20);
-
-        IphoneObservable.setStockCount(0);
+        iphoneObservable.setNumOfItem(20);
 
     }
 
